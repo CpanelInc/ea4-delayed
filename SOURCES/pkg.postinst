@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# actual install not upgrade (apt we can’t differentiate using $1 :/)
+if [[ "$1" == "1" ]] || [[ "$1" == "postinst" ]]; then
+    if [ -x "/usr/bin/apt" ]; then
+        # if not already disabled it should mean install not upgrade
+        # if they reenabled it then we want upgrade to do this too
+        #    becasue it means 2 competing active sources
+        if [ -e "/etc/apt/sources.list.d/EA4.list" ]; then
+           mv /etc/apt/sources.list.d/EA4.list /etc/apt/sources.list.d/EA4.list.disabled
+        fi
+    elif [ -x "/usr/bin/dnf" ]; then
+        dnf config-manager --set-disabled EA4
+    elif [ -x "/usr/bin/yum-config-manager" ]; then
+        yum-config-manager --disable EA4
+    else
+        echo "Could not determine pkg manager: could not disable EA4 production" >&2
+    fi
+fi

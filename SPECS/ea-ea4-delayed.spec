@@ -10,6 +10,8 @@ License: BSD 2-Clause
 Vendor: cPanel, Inc.
 
 Source1: EA4-delayed.repo
+Source2: pkg.postinst
+Source3: pkg.prerm
 
 %description
 This package changes the server from EA4-production to EA4-delayed.
@@ -25,7 +27,13 @@ install -m 644 %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/EA4-delayed.
 %clean
 rm -rf %{buildroot}
 
-# TODO: need to disable EA4 on install, enable EA4 on uninstall
+%post
+
+%include %{SOURCE2}
+
+%preun
+
+%include %{SOURCE3}
 
 %files
 %defattr(-,root,root,-)

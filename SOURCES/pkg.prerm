@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# actual uninstall not upgrade
+if [[ "$1" == "0" ]] || [[ "$1" == "remove" ]] || [[ "$1" == "purge" ]]; then
+    if [ -x "/usr/bin/apt" ]; then
+        mv /etc/apt/sources.list.d/EA4.list.disabled /etc/apt/sources.list.d/EA4.list
+    elif [ -x "/usr/bin/dnf" ]; then
+        dnf config-manager --set-enabled EA4
+    elif [ -x "/usr/bin/yum-config-manager" ]; then
+        yum-config-manager --enable EA4
+    else
+        echo "Could not determine pkg manager: could not re-enable EA4 production" >&2
+    fi
+fi
