@@ -15,7 +15,7 @@ Source3: pkg.prerm
 
 %description
 This package changes the server from EA4-production to EA4-delayed.
-EA4-delayed containes packages from EA4-production but it is a few
+EA4-delayed contains packages from EA4-production but it is a few
 days behind. This gives extra-cautious admins a buffer to see how
 production shakes out.
 
