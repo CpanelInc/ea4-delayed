@@ -1,0 +1,7 @@
+[EA4-delayed]
+name=EA4 Delayed ( EasyApache 4 )
+mirrorlist=http://httpupdate.cpanel.net/ea4-delayed-c$releasever-$basearch-mirrorlist
+gpgcheck=1
+gpgkey=https://securedownloads.cpanel.net/cPanelPublicRPMKey.asc
+enabled=1
+cost=50
