@@ -19,13 +19,15 @@ EA4-delayed containes packages from EA4-production but it is a few
 days behind. This gives extra-cautious admins a buffer to see how
 production shakes out.
 
+%build
+echo "nothing to build"
+
 %install
-rm -rf %{buildroot}
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d
 install -m 644 %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/yum.repos.d/EA4-delayed.repo
 
 %clean
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 
 %post
 
