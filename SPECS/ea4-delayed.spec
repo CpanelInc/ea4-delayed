@@ -1,7 +1,7 @@
 Name: ea4-delayed
 Version: 0.1
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4600 for more details
-%define release_prefix 1
+%define release_prefix 2
 Release: %{release_prefix}%{?dist}.cpanel
 Summary: Get EA4 production packages a few days after they go to production
 
@@ -42,5 +42,8 @@ rm -rf $RPM_BUILD_ROOT
 %config %{_sysconfdir}/yum.repos.d/EA4-delayed.repo
 
 %changelog
+* Wed Apr 06 2022 Dan Muey <dan@cpanel.net> - 0.1-2
+- ZC-9904: Fix deb sources syntax error
+
 * Wed Mar 23 2022 Dan Muey <dan@cpanel.net> - 0.1-1
 - Initial version
