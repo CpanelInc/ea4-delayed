@@ -1,7 +1,7 @@
 {
-   "add_to_sources" : [ "EA4-delayed.list" ],
+   "add_to_sources" : [ "*.list" ],
    "adjust_install_file_src" : [
-      [ "^(.*)\\.repo$", "$1.list" ]
+      [ "^(.*)\\.repo$", "$1-${env:OBS_REPO}.list" ]
    ],
    "adjust_install_file_dst" : [
       [ "^/etc/yum.repos.d", "/etc/apt/sources.list.d" ]
